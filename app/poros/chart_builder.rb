@@ -3,7 +3,7 @@ module ChartBuilder
 
   def call(prices)
     data = {
-     labels: prices.map { |p| p.created_at.strftime("%e %b %Y, %l:%M %p") },
+     labels: prices.map(&:printable_created_at),
      datasets: [
        {
          label: "Price evolution",
@@ -13,7 +13,7 @@ module ChartBuilder
          pointStrokeColor: "#fff",
          pointHighlightFill: "#fff",
          pointHighlightStroke: "rgba(220,220,220,1)",
-         data: prices.map { |p| p.value }
+         data: prices.map(&:value)
        }
      ]
    }
