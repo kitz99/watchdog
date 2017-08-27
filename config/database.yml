@@ -1,0 +1,23 @@
+default: &default
+  host: <%= ENV.fetch("PG_HOST") %>
+  port: <%= ENV.fetch("PG_PORT") %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  reconnect: true
+  encoding: unicode
+  username: <%= ENV.fetch("PG_USER") %>
+  password: <%= ENV.fetch("PG_PASS") %>
+  template: template0
+  encoding: UTF8
+  adapter: postgresql
+
+development:
+  <<: *default
+  database: watchdog_development
+
+test:
+  <<: *default
+  database: watchdog_test
+
+production:
+  <<: *default
+  database: watchdog_production
