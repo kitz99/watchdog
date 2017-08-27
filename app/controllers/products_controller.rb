@@ -12,7 +12,7 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
     @prices = @product.prices
-    @min_price = @prices.select("id, min(value) as min_price_value, created_at as time")
+    @min_price = @prices.select("id, min(value) as min_price_value, created_at")
                         .group(:id, :created_at)
                         .order("min_price_value asc")
                         .first

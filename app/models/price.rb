@@ -11,4 +11,8 @@
 
 class Price < ApplicationRecord
   belongs_to :product
+
+  def printable_created_at
+    created_at.in_time_zone("Europe/Bucharest").strftime("%e %b %Y, %l:%M %p").strip
+  end
 end
