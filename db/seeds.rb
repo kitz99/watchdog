@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+%w(Emag PcGarage Cell Elefant Evomag Altex MediaGalaxy).each do |name|
+  s = Shop.find_or_initialize_by(name: name)
+  s.save!
+end

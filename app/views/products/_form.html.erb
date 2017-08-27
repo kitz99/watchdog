@@ -1,0 +1,8 @@
+<%= bootstrap_form_for(@product) do |f| %>
+  <%= f.select :shop_id, @shops, { label: "Choose Shop" }, { class: "selectpicker" } %>
+  <%= f.text_field :name %>
+  <%= f.text_field :href %>
+  <%= f.text_field :price_xpath %>
+
+  <%= f.primary "Save" %>
+<% end %>

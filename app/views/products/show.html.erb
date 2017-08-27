@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+<h3><%= link_to(@product.name, @product.href) %> | <span><%= @product.shop.name %></span></h3>
+<% if @min_price %>
+  <h4>Min price till now: <%= @min_price['min_price_value'] %> on <%= @min_price['time'].strftime("%e %b %Y, %l:%M %p") %></h4>
+<% end %>
+<table class="table">
+  <thead>
+    <tr>
+      <th>On date</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @prices.each do |price| %>
+      <tr>
+        <td><%= price.created_at.strftime("%e %b %Y, %l:%M %p") %></td>
+        <td><%= price.value %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>
