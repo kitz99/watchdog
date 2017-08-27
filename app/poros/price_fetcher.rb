@@ -25,6 +25,8 @@ class PriceFetcher
       build_emag_price(raw.first)
     when 'Elefant'
       build_elefant_price(raw.first)
+    when 'MediaGalaxy'
+      build_mg_price(raw.first)
     end
   end
 end
