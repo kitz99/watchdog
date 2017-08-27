@@ -22,6 +22,7 @@ gem 'bootstrap', '~> 4.0.0.alpha6'
 gem 'bootstrap_form', :git => "git@github.com:bootstrap-ruby/rails-bootstrap-forms.git", :branch => "bootstrap-v4"
 gem 'annotate', require: false
 gem 'open_uri_redirections'
+gem 'whenever', :require => false
 
 group :development, :test do
   gem 'pry-byebug'
