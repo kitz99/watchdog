@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  include ChartBuilder
 
   # GET /products
   # GET /products.json
@@ -15,6 +16,7 @@ class ProductsController < ApplicationController
                         .group(:id, :created_at)
                         .order("min_price_value asc")
                         .first
+    @size, @data = ChartBuilder.call(@prices)
   end
 
   # GET /products/new

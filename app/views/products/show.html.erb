@@ -1,8 +1,12 @@
 <p id="notice"><%= notice %></p>
+<%= link_to 'Edit', edit_product_path(@product) %> | <%= link_to 'Back', products_path %>
 <h3><%= link_to(@product.name, @product.href) %> | <span><%= @product.shop.name %></span></h3>
 <% if @min_price %>
   <h4>Min price till now: <%= @min_price['min_price_value'] %> on <%= @min_price['time'].strftime("%e %b %Y, %l:%M %p") %></h4>
 <% end %>
+<div>
+  <%= line "line_id", @size, @data %>
+</div>
 <table class="table">
   <thead>
     <tr>
@@ -20,6 +24,3 @@
   </tbody>
 </table>
 
-
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>

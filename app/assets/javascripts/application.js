@@ -15,4 +15,7 @@
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
+//= require chart
+//= require d3
+//= require nvd3
 //= require_tree .

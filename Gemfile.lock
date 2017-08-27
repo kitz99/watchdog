@@ -57,6 +57,8 @@ GEM
       sass (>= 3.4.19)
     builder (3.2.3)
     byebug (9.1.0)
+    chart (0.1.4.9)
+      rails
     chronic (0.10.2)
     coderay (1.1.1)
     coffee-rails (4.2.2)
@@ -182,6 +184,7 @@ DEPENDENCIES
   annotate
   bootstrap (~> 4.0.0.alpha6)
   bootstrap_form!
+  chart
   coffee-rails (~> 4.2)
   jbuilder (~> 2.5)
   jquery-rails
