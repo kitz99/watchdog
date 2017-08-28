@@ -18,12 +18,14 @@ gem 'jbuilder', '~> 2.5'
 gem 'nokogiri'
 gem 'jquery-rails'
 
-gem 'bootstrap', '~> 4.0.0.alpha6'
-gem 'bootstrap_form', :git => "git@github.com:bootstrap-ruby/rails-bootstrap-forms.git", :branch => "bootstrap-v4"
+# gem 'bootstrap', '~> 4.0.0.alpha6'
+gem 'bootstrap-sass', '~> 3.3.6'
+gem 'bootstrap_form', :git => "git@github.com:bootstrap-ruby/rails-bootstrap-forms.git" #, :branch => "bootstrap-v4"
 gem 'annotate', require: false
 gem 'open_uri_redirections'
 gem 'whenever', :require => false
 gem 'chart'
+gem "figaro"
 
 group :development, :test do
   gem 'pry-byebug'
@@ -31,6 +33,4 @@ end
 
 group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
-  # gem 'spring'
-  # gem 'spring-watcher-listen', '~> 2.0.0'
 end

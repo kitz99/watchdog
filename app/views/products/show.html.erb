@@ -1,26 +1,34 @@
 <p id="notice"><%= notice %></p>
-<%= link_to 'Edit', edit_product_path(@product) %> | <%= link_to 'Back', products_path %>
+<%= link_to 'Edit', edit_product_path(@product), class: 'btn btn-primary' %> | <%= link_to 'Back', products_path, class: '' %>
 <h3><%= link_to(@product.name, @product.href) %> | <span><%= @product.shop.name %></span></h3>
-<% if @min_price %>
+<% if @min_price != 999_999.0 %>
   <h4>Min price till now: <%= @min_price['min_price_value'] %> on <%= @min_price.printable_created_at %></h4>
 <% end %>
-<div>
-  <%= line "line_id", @size, @data %>
-</div>
-<table class="table">
-  <thead>
-    <tr>
-      <th>On date</th>
-      <th>Value</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @prices.each do |price| %>
+<% if @product.min_desired_price != 0.0 %>
+  <h4>Min desired_price: <%= @product.min_desired_price %></h4>
+<% end %>
+
+<% if @prices.any? %>
+  <div>
+    <%= line "line_id", @size, @data %>
+  </div>
+  <table class="table">
+    <thead>
       <tr>
-        <td><%= price.printable_created_at %></td>
-        <td><%= price.value %></td>
+        <th>On date</th>
+        <th>Value</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @prices.each do |price| %>
+        <tr>
+          <td><%= price.printable_created_at %></td>
+          <td><%= price.value %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>Informations not available yet.</p>
+<% end %>
 

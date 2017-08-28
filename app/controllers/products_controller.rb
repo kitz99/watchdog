@@ -12,10 +12,7 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
     @prices = @product.prices
-    @min_price = @prices.select("id, min(value) as min_price_value, created_at")
-                        .group(:id, :created_at)
-                        .order("min_price_value asc")
-                        .first
+    @min_price = @product.min_actual_price
     @size, @data = ChartBuilder.call(@prices)
   end
 
@@ -78,6 +75,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :href, :shop_id, :price_xpath)
+      params.require(:product).permit(:name, :href, :shop_id, :price_xpath, :active, :min_desired_price)
     end
 end

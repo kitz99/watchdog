@@ -13,6 +13,12 @@ class PriceFetcher
     @document = Nokogiri::HTML(open(url, allow_redirections: :safe))
     price = build_price(@document.xpath(@product.price_xpath))
     if price
+      if price < @product.min_actual_price
+        @product.update_attributes(min_actual_price: price)
+      end
+      if price <= @product.min_desired_price
+        Postman.new(@product, price).deliver!
+      end
       @product.prices << Price.new(value: price)
     end
   end

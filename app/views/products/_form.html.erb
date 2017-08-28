@@ -3,6 +3,15 @@
   <%= f.text_field :name %>
   <%= f.text_field :href %>
   <%= f.text_field :price_xpath %>
+  <%= f.check_box :active %>
+  <div class="row">
+    <div class="col-md-6">
+      <%= f.number_field :min_desired_price, step: 0.1 %>
+    </div>
+    <div class="col-md-6">
+      <%= f.number_field :min_actual_price, disabled: true %>
+    </div>
+  </div>
 
-  <%= f.primary "Save" %>
+  <%= f.primary "Save" %>  <%= link_to('Back', products_path, class: 'btn btn-default') %>
 <% end %>
