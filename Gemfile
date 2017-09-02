@@ -26,6 +26,7 @@ gem 'open_uri_redirections'
 gem 'whenever', :require => false
 gem 'chart'
 gem "figaro"
+gem "rest-client"
 
 group :development, :test do
   gem 'pry-byebug'
