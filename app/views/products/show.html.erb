@@ -13,22 +13,40 @@
     <%= line "line_id", @size, @data %>
   </div>
 
-  <table class="table">
-    <thead>
-      <tr>
-        <th>On date</th>
-        <th>Value</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @prices.each do |price| %>
-        <tr>
-          <td><%= price.printable_created_at %></td>
-          <td><%= price.value %></td>
-        </tr>
+  <div class="bs-example bs-example-tabs" data-example-id="togglable-tabs">
+    <ul class="nav nav-tabs" id="myTabs" role="tablist">
+      <% @prices.keys.each_with_index do |key, idx| %>
+        <%= content_tag :li, role: 'presentation', class: (idx == @prices.keys.size - 1) ? 'li-tab active' : 'li-tab' do %>
+          <a class="custom-tab" href="#<%= key.to_s %>" id="tab-<%= key.to_s %>" data-toggle="tab" aria-controls="<%= key.to_s %>" aria-expanded="false">
+            <%= key %>
+          </a>
+        <% end %>
       <% end %>
-    </tbody>
-  </table>
+    </ul>
+
+    <div class="tab-content" id="myTabContent">
+      <% @prices.each_with_index do |(k, v), idx| %>
+        <div class="tab-pane <%= (idx == @prices.keys.size - 1) ? 'active' : 'fade' %>" role="tabpanel" id="<%= k.to_s %>" aria-labelledby="<%= k.to_s %>">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>On date</th>
+                <th>Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% v.each do |price| %>
+                <tr>
+                  <td><%= price.printable_created_at %></td>
+                  <td><%= price.value %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      <% end %>
+    </div>
+  </div>
 <% else %>
   <p>Informations not available yet.</p>
 <% end %>

@@ -14,6 +14,8 @@ class ProductsController < ApplicationController
     @prices = @product.prices.order(created_at: :asc)
     @min_price = @product.min_actual_price
     @size, @data = ChartBuilder.call(@prices)
+
+    @prices = @prices.to_a.group_by{|p| p.created_at.to_date }
   end
 
   # GET /products/new
