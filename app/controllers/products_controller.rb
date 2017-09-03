@@ -11,9 +11,10 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
-    @prices = @product.prices
+    @prices = @product.prices.order(created_at: :asc)
     @min_price = @product.min_actual_price
     @size, @data = ChartBuilder.call(@prices)
+    @alt_size, @alt_data = ChartBuilder.alternative(@prices)
   end
 
   # GET /products/new
