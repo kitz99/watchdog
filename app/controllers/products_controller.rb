@@ -13,8 +13,7 @@ class ProductsController < ApplicationController
   def show
     @prices = @product.prices.order(created_at: :asc)
     @min_price = @product.min_actual_price
-    @size, @data = ChartBuilder.call(@prices)
-    @alt_size, @alt_data = ChartBuilder.alternative(@prices)
+    @size, @data = ChartBuilder.alternative(@prices)
   end
 
   # GET /products/new
