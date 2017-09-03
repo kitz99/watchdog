@@ -29,8 +29,6 @@ module ChartBuilder
     }
   end
 
-  private
-
   def data_array_builder(prices)
     result = [prices.first]
     start = prices.second
